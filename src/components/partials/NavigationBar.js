@@ -5,7 +5,7 @@ import {
   ListItemIcon,
   ListItemText,
   Box,
-  makeStyles, Hidden, AppBar, Toolbar, IconButton, Tooltip,
+  makeStyles, Hidden, AppBar,
 } from '@material-ui/core';
 import * as Icon from '@material-ui/icons';
 import {useTranslation} from 'react-i18next';

@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, {useState} from 'react';
 import {
   AppBar,
   Toolbar,
@@ -6,7 +6,7 @@ import {
   Box,
   Button,
   Tooltip,
-  makeStyles,
+  makeStyles, Hidden, Menu, MenuItem,
 } from '@material-ui/core';
 import * as Icon from '@material-ui/icons';
 import {useTranslation} from 'react-i18next';
@@ -15,7 +15,6 @@ import {info} from '../../hooks/DataHook';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginLeft: 200,
     width: 'auto',
   },
   flex: {
@@ -31,25 +30,66 @@ const useStyles = makeStyles((theme) => ({
 export default function TopBar() {
   const classes = useStyles();
   const {t, i18n} = useTranslation();
-  console.log(info);
+  const [langAnchor, setLangAnchor] = useState(null);
+  const openLangMenu = (event) => {
+    setLangAnchor(event.currentTarget);
+  };
+  const closeLangMenu = () => {
+    setLangAnchor(null);
+  };
+  const setLangAndClose = (lang) => {
+    i18n.changeLanguage(lang);
+    closeLangMenu();
+  };
   return (
     <AppBar position="static" elevation={0} className={classes.root}>
-      <Toolbar>
-        <Box className={classes.flex}/>
-        <Button
-          onClick={() => i18n.changeLanguage('pt')}
+      <Menu
+        anchorEl={langAnchor}
+        keepMounted
+        open={Boolean(langAnchor)}
+        onClose={closeLangMenu}
+      >
+        <MenuItem
           disabled={startsWith(i18n.language, 'pt')}
-          className={classes.buttonDisabled}
+          onClick={() => setLangAndClose('pt')}
         >
           {t('portuguese')}
-        </Button>
-        <Button
-          onClick={() => i18n.changeLanguage('en')}
+        </MenuItem>
+        <MenuItem
           disabled={startsWith(i18n.language, 'en')}
-          className={classes.buttonDisabled}
+          onClick={() => setLangAndClose('en')}
         >
           {t('english')}
-        </Button>
+        </MenuItem>
+      </Menu>
+      <Toolbar>
+        <Box className={classes.flex}/>
+        <Hidden xsDown>
+          <Button
+            onClick={() => i18n.changeLanguage('pt')}
+            disabled={startsWith(i18n.language, 'pt')}
+            className={classes.buttonDisabled}
+          >
+            {t('portuguese')}
+          </Button>
+          <Button
+            onClick={() => i18n.changeLanguage('en')}
+            disabled={startsWith(i18n.language, 'en')}
+            className={classes.buttonDisabled}
+          >
+            {t('english')}
+          </Button>
+        </Hidden>
+        <Hidden smUp>
+          <Tooltip title={t('translate')}>
+            <IconButton
+              aria-controls="simple-menu" aria-haspopup="true"
+              onClick={openLangMenu}
+            >
+              <Icon.Translate/>
+            </IconButton>
+          </Tooltip>
+        </Hidden>
         <Tooltip title={t('email')}>
           <IconButton>
             <Icon.Email/>

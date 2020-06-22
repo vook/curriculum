@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {Box, Typography, makeStyles, useTheme, Fade} from '@material-ui/core';
+import {Box, makeStyles, useTheme} from '@material-ui/core';
 import LoadingBar from 'react-top-loading-bar';
 import TopBar from './partials/TopBar';
 import {i18nPromise} from '../config/i18n';
 import NavigationBar from './partials/NavigationBar';
-import About from './pages/About';
 import {dataPromise} from '../hooks/DataHook';
+import Home from './pages/Home';
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -13,7 +13,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   content: {
-    marginLeft: 200,
+    [theme.breakpoints.up('md')]: {
+      marginLeft: 200,
+    },
     padding: 50,
   },
 }));
@@ -34,13 +36,14 @@ export default function App() {
         progress={progress}
         height={3}
         color={theme.palette.secondary.main}
-        onLoaderFinished={() => setInitialized(true)}
+        onLoaderFinished={() => {
+          setInitialized(true)}}
       />
       {isInitialized && <Box>
         <NavigationBar/>
         <TopBar/>
         <Box className={classes.content}>
-          <About/>
+          <Home/>
         </Box>
       </Box>}
     </Box>

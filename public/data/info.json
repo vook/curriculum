@@ -1,4 +1,62 @@
 {
   "linkedin": "https://www.linkedin.com/in/jhonymota/",
-  "github": "https://github.com/vook"
+  "github": "https://github.com/vook",
+  "email": "jhony.developer@gmail.com",
+  "experience": [
+    {
+      "start_month": 7,
+      "start_year": 2020,
+      "end_month": null,
+      "end_year": null,
+      "company": "Stefanini",
+      "pt_role": "Desenvolvedor Python",
+      "en_role": "Python Software Engineer",
+      "pt_description": "Desenvolvimento e arquitetura de plataformas web em python utilizando Flask, Nodejs, Postgres, Mongodb, Docker, Elasticsearch e Logstash",
+      "en_description": "Development and architecture of python web platforms using Flask, Nodejs, Postgres, Mongodb, Docker, Elasticsearch and Logstash"
+    },
+    {
+      "start_month": 4,
+      "start_year": 2019,
+      "end_month": 4,
+      "end_year": 2020,
+      "company": "Moneycloud",
+      "pt_role": "Arquiteto de Software",
+      "en_role": "Software Architect",
+      "pt_description": "Desenvolvimento e arquitetura de microserviços em PHP, montagem de ambientes de produção e desenvolvimento usando docker e AWS, montagem de ambientes para sistemas frontend como angular e react.",
+      "en_description": "Development and architecture of microservices in PHP, assembly of production and development environments using docker and AWS, assembly of environments for frontend system such as angular and react"
+    },
+    {
+      "start_month": 4,
+      "start_year": 2018,
+      "end_month": 4,
+      "end_year": 2019,
+      "company": "Basis",
+      "pt_role": "Desenvolvedor Php",
+      "en_role": "PHP Software Engineer",
+      "pt_description": "Desenvolvimento de sistemas em PHP, Javascript, Typescript. Utilizando ferramentas como: Angular, React, Vuejs, Extjs, Symfony, Laravel, Zend Framework, Docker, Elasticsearch, Kibana, Logstash, Gearman, Git, Redis, Postgres e Oracle.",
+      "en_description": "Systems development in PHP, Javascript, Typescript. Using tools such as: Angular, React, Vuejs, Extjs, Symfony, Laravel, Zend Framework, Docker, Elasticsearch, Kibana, Logstash, Gearman, Git, Redis, Postgres and Oracle."
+    },
+    {
+      "start_month": 7,
+      "start_year": 2016,
+      "end_month": 4,
+      "end_year": 2018,
+      "company": "Compartveg",
+      "pt_role": "Desenvolvedor PHP",
+      "en_role": "PHP Software Engineer",
+      "pt_description": "Desenvolvimento de sistema em PHP e Javascript, Utilizando ferramentas como Angularjs, Laravel, Docker, Vagrant, Git e Mysql.",
+      "en_description": "System development in PHP and Javascript, using tools such as Angularjs, Laravel, Docker, Vagrant, Git and Mysql."
+    },
+    {
+      "start_month": 8,
+      "start_year": 2014,
+      "end_month": 7,
+      "end_year": 2016,
+      "company": "Transoft",
+      "pt_role": "Desenvolvedor PHP",
+      "en_role": "PHP Software Engineer",
+      "pt_description": "Desenvolvimento de sistema em PHP, Javascript e Java, Utilizando ferramentas como Laravel, Angularjs, Jquery, Zend Framework, Symfony, Git, Postgres e Oracle.",
+      "en_description": "System development in PHP, Javascript and Java, using tools such as Laravel, Angularjs, Jquery, Zend Framework, Symfony, Git, Postgres and Oracle."
+    }
+  ]
 }

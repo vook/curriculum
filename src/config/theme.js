@@ -16,6 +16,11 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiTypography: {
+      body2: {
+        fontSize: '2.125rem'
+      }
+    },
     MuiIconButton: {
       root: {
         color: '#a7a7a7',

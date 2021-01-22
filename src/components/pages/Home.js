@@ -2,14 +2,15 @@ import React, {} from 'react';
 import {Box, makeStyles, Typography} from '@material-ui/core';
 import {useTranslation} from 'react-i18next';
 import * as Icon from '@material-ui/icons';
+import {Element} from 'react-scroll'
 
 const useStyle = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.up('md')]: {
-      minHeight: 'calc(100vh - 167px)',
+      minHeight: 'calc(100vh - 50px)',
     },
     [theme.breakpoints.down('sm')]: {
-      minHeight: 'calc(100vh - 223px)',
+      minHeight: 'calc(100vh - 122px)',
     },
     alignContent: 'center',
     display: 'flex',
@@ -29,7 +30,7 @@ export default function Home() {
   const {t} = useTranslation();
   const classes = useStyle();
   return (
-    <Box className={classes.root}>
+    <Element className={classes.root} id='home'>
       <Box className={classes.content}>
         <Typography variant='h2'>
           {t('hello')}
@@ -42,6 +43,6 @@ export default function Home() {
         </Typography>
         <Icon.MoreHoriz fontSize='large'/>
       </Box>
-    </Box>
+    </Element>
   );
 }

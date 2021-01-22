@@ -9,7 +9,12 @@
   "about": "About",
   "career": "Career",
   "knowledge": "Knowledge",
+  "actual": "Actual",
+  "copy": "Copy Text",
   "hello": "Hello, my name is",
   "name": "Jhony Mota",
-  "introduction": "I'm a full-stack software engineer, get to know my professional trajectory."
+  "introduction": "I'm a full-stack software engineer, get to know my professional trajectory.",
+  "about_sl": "Much pleasure,",
+  "about_p_1": "my name is Jhony, I'm full-stack developer with large experience on web applications, know about of most popular stack of backend and frontend development. I always try to apply the best practices of development, I'm assertive, I always try to provide the best solutions.",
+  "about_p_2": "Let's develop a project together?"
 }

@@ -1,13 +1,21 @@
 import React, {useState} from 'react';
 import {
   AppBar,
-  Toolbar,
-  IconButton,
+  Avatar,
   Box,
   Button,
+  Dialog,
+  DialogContent,
+  Hidden,
+  IconButton,
+  makeStyles,
+  Menu,
+  MenuItem,
+  Toolbar,
   Tooltip,
-  makeStyles, Hidden, Menu, MenuItem,
+  Typography,
 } from '@material-ui/core';
+import {pink} from '@material-ui/core/colors';
 import * as Icon from '@material-ui/icons';
 import {useTranslation} from 'react-i18next';
 import {startsWith} from 'lodash';
@@ -15,7 +23,9 @@ import {info} from '../../hooks/DataHook';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 'auto',
+    width: '100%',
+    display: 'flex',
+    color: theme.palette.secondary.main,
   },
   flex: {
     flexGrow: 1,
@@ -25,12 +35,24 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.secondary.main,
     },
   },
+  avatar: {
+    '& .MuiSvgIcon-root': {
+      color: '#fff',
+    },
+    backgroundColor: pink[500]
+  },
+  dialog: {
+    display: 'flex',
+    alignItems: 'center'
+  }
 }));
 
 export default function TopBar() {
   const classes = useStyles();
   const {t, i18n} = useTranslation();
   const [langAnchor, setLangAnchor] = useState(null);
+  const [mailDialog, setOpenMailDialog] = useState(false);
+  const [phoneDialog, setOpenPhoneDialog] = useState(false);
   const openLangMenu = (event) => {
     setLangAnchor(event.currentTarget);
   };
@@ -42,7 +64,7 @@ export default function TopBar() {
     closeLangMenu();
   };
   return (
-    <AppBar position="static" elevation={0} className={classes.root}>
+    <AppBar position="fixed" elevation={0} className={classes.root}>
       <Menu
         anchorEl={langAnchor}
         keepMounted
@@ -90,8 +112,24 @@ export default function TopBar() {
             </IconButton>
           </Tooltip>
         </Hidden>
-        <Tooltip title={t('email')}>
-          <IconButton>
+        <Dialog open={mailDialog} onBackdropClick={() => setOpenMailDialog(false)}>
+          <DialogContent className={classes.dialog}>
+            <Tooltip title={t('copy')}>
+              <IconButton onClick={() => {
+                navigator.clipboard.writeText(info.email);
+                setOpenMailDialog(false);
+              }}>
+                <Avatar className={classes.avatar}>
+                  <Icon.FileCopy/>
+                </Avatar>
+              </IconButton>
+            </Tooltip>
+            &nbsp;
+            <Typography variant='h4'>{info.email}</Typography>
+          </DialogContent>
+        </Dialog>
+        <Tooltip title={t('email') + ' : ' + info.email}>
+          <IconButton onClick={() => setOpenMailDialog(!mailDialog)}>
             <Icon.Email/>
           </IconButton>
         </Tooltip>

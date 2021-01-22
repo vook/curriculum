@@ -9,7 +9,12 @@
   "about": "Sobre",
   "career": "Carreira",
   "knowledge": "Conhecimento",
+  "actual": "Atual",
+  "copy": "Copiar Texto",
   "hello": "Olá, meu nome é",
   "name": "Jhony Mota",
-  "introduction": "Sou desenvolvedor full-stack, conheça um pouco da minha trajetória profissional."
+  "introduction": "Sou desenvolvedor full-stack, conheça um pouco da minha trajetória profissional.",
+  "about_sl": "Muito Prazer,",
+  "about_p_1": "me chamo Jhony, sou desenvolvedor com ampla experência em aplicações web, conheço os mais populares stacks de desenvolvimento backend e frontend. Tento aplicar sempre as melhores práticas de desenvolvimento, sou assertivo ",
+  "about_p_2": "Vamos desenvolver um projeto juntos?"
 }

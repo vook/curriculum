@@ -17,6 +17,7 @@
     "react-dom": "^16.13.1",
     "react-i18next": "^11.5.1",
     "react-scripts": "3.4.1",
+    "react-scroll": "^1.8.1",
     "react-top-loading-bar": "^1.2.0",
     "serve": "^11.3.2"
   },

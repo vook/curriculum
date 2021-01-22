@@ -1,14 +1,6 @@
 import React, {Fragment} from 'react';
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Box,
-  makeStyles, Hidden, AppBar,
-} from '@material-ui/core';
-import * as Icon from '@material-ui/icons';
-import {useTranslation} from 'react-i18next';
+import {AppBar, Box, Hidden, List, ListItem, ListItemIcon, ListItemText, makeStyles,} from '@material-ui/core';
+import {Link} from 'react-scroll'
 
 const useStyles = makeStyles((theme) => ({
   sideBar: {
@@ -31,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     },
     display: 'flex',
     flexDirection: 'row',
+  },
+  link: {
+    cursor: 'pointer',
   },
   menu: {
     width: '100%',
@@ -59,53 +54,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavigationBar() {
+export default function NavigationBar(props) {
   const classes = useStyles();
-  const {t} = useTranslation();
   return (
     <Fragment>
       <Hidden smDown>
         <Box className={classes.sideBar}>
           <Box className={classes.menu}>
             <List classes={classes.list}>
-              <ListItem
-                href='#' selected
-                classes={{root: classes.item, selected: classes.selected}}
-              >
-                <ListItemIcon>
-                  <Icon.Home/>
-                </ListItemIcon>
-                <ListItemText
-                  primary={t('home')}
-                />
-              </ListItem>
-              <ListItem
-                href='#'
-                classes={{root: classes.item, selected: classes.selected}}
-              >
-                <ListItemIcon>
-                  <Icon.AssignmentInd/>
-                </ListItemIcon>
-                <ListItemText primary={t('about')}/>
-              </ListItem>
-              <ListItem
-                href='#'
-                classes={{root: classes.item, selected: classes.selected}}
-              >
-                <ListItemIcon>
-                  <Icon.BusinessCenter/>
-                </ListItemIcon>
-                <ListItemText primary={t('career')}/>
-              </ListItem>
-              <ListItem
-                href='#'
-                classes={{root: classes.item, selected: classes.selected}}
-              >
-                <ListItemIcon>
-                  <Icon.EmojiObjects/>
-                </ListItemIcon>
-                <ListItemText primary={t('knowledge')}/>
-              </ListItem>
+              {props.menu.map((menu, index) =>
+                <Link key={index}
+                      className={classes.link}
+                      activeClass={classes.selected}
+                      spy={true}
+                      to={menu.elementId}
+                      offset={-64}
+                      smooth={true}>
+                  <ListItem classes={{root: classes.item}}>
+                    <ListItemIcon>
+                      <menu.icon/>
+                    </ListItemIcon>
+                    <ListItemText
+                        primary={menu.text}
+                    />
+                  </ListItem>
+                </Link>
+              )}
             </List>
           </Box>
         </Box>
@@ -113,26 +87,20 @@ export default function NavigationBar() {
       <Hidden mdUp>
         <AppBar position="fixed" elevation={0} className={classes.bottomBar}>
           <List className={classes.toolbar}>
-            <ListItem classes={{selected: classes.selected}} selected>
-              <ListItemIcon>
-                <Icon.Home/>
-              </ListItemIcon>
-            </ListItem>
-            <ListItem classes={{selected: classes.selected}}>
-              <ListItemIcon>
-                <Icon.AssignmentInd/>
-              </ListItemIcon>
-            </ListItem>
-            <ListItem classes={{selected: classes.selected}}>
-              <ListItemIcon>
-                <Icon.BusinessCenter/>
-              </ListItemIcon>
-            </ListItem>
-            <ListItem classes={{selected: classes.selected}}>
-              <ListItemIcon>
-                <Icon.EmojiObjects/>
-              </ListItemIcon>
-            </ListItem>
+            {props.menu.map((menu, index) =>
+                <Link key={index}
+                      activeClass={classes.selected}
+                      spy={true}
+                      to={menu.elementId}
+                      offset={-64}
+                      smooth={true}>
+                  <ListItem>
+                    <ListItemIcon>
+                      <menu.icon/>
+                    </ListItemIcon>
+                  </ListItem>
+                </Link>
+            )}
           </List>
         </AppBar>
       </Hidden>

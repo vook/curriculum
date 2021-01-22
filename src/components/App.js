@@ -6,6 +6,11 @@ import {i18nPromise} from '../config/i18n';
 import NavigationBar from './partials/NavigationBar';
 import {dataPromise} from '../hooks/DataHook';
 import Home from './pages/Home';
+import About from "./pages/About";
+import Career from "./pages/Career";
+import Knowledge from "./pages/Knowledge";
+import * as Icon from '@material-ui/icons';
+import {useTranslation} from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -18,11 +23,15 @@ const useStyles = makeStyles((theme) => ({
     },
     padding: 50,
   },
+  pageBottomMargin: {
+    marginBottom: 75
+  }
 }));
 
 export default function App() {
   const [progress, setProgress] = useState(0);
   const [isInitialized, setInitialized] = useState(false);
+  const {t} = useTranslation();
   Promise.all([i18nPromise, dataPromise]).then(() => {
     setProgress(100);
   });
@@ -37,13 +46,38 @@ export default function App() {
         height={3}
         color={theme.palette.secondary.main}
         onLoaderFinished={() => {
-          setInitialized(true)}}
+          setInitialized(true)
+        }}
       />
       {isInitialized && <Box>
-        <NavigationBar/>
+        <NavigationBar menu={[
+          {
+            icon: Icon.Home,
+            text: t('home'),
+            elementId: 'home'
+          },
+          {
+            icon: Icon.AssignmentInd,
+            text: t('about'),
+            elementId: 'about'
+          },
+          {
+            icon: Icon.BusinessCenter,
+            text: t('career'),
+            elementId: 'career'
+          },
+          {
+            icon: Icon.EmojiObjects,
+            text: t('knowledge'),
+            elementId: 'knowledge'
+          },
+        ]}/>
         <TopBar/>
         <Box className={classes.content}>
           <Home/>
+          <About/>
+          <Career/>
+          <Knowledge/>
         </Box>
       </Box>}
     </Box>
